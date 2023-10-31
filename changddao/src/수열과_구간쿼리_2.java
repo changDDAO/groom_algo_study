@@ -8,7 +8,7 @@ public class 수열과_구간쿼리_2 {
     static int[] arr = {0, 1, 2, 4, 3};
     static int [][]queries = new int[1000][3];
     public static void main(String[] args) throws IOException {
-        BufferedReader br  = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int index = 0;
         while (queries[index++][0] != -1) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -31,6 +31,7 @@ public class 수열과_구간쿼리_2 {
             System.out.println(answer);
         }
         }
+        //https://school.programmers.co.kr/learn/courses/30/lessons/181923
 
     }
 
