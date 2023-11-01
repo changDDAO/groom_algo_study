@@ -43,6 +43,7 @@ public class Baek1940 {
             dfs(index+1, depth+1);
           }
     }*/
+    //https://www.acmicpc.net/problem/1940
 
     //2번째 방식 BinarySearch의 원리를 이용하여 문제를 풀이함
     static int n, target;
