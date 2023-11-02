@@ -21,8 +21,11 @@ public class Baek15686 {
     static List<int[]> houses = new ArrayList<>();
     //치킨 가게들
     static List<int[]> markets = new ArrayList<>();
+    //선택된 치킨 가게들
     static List<int[]> selectedMarkets = new ArrayList<>();
+    // 완전탐색을 수행할 때, 방문했던 치킨집인지 체크할 변수
     static boolean[] visited;
+    //완전탐색을 수행하고 최솟값을 담을 answer 변수
     static int answer = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
@@ -31,7 +34,7 @@ public class Baek15686 {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
         arrMap = new int[n][n];
-        //맵 초기화 및 house랑 markets 분리하여 ArrayList에 담기
+        //맵 초기화 및 houses랑 markets 분리하여 ArrayList에 담기
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
 
@@ -49,24 +52,31 @@ public class Baek15686 {
 
     }
 
-    static void findMinDist(int selectedMarket, int depth) {
-        if (depth == 3) {
+    static void findMinDist(int idx, int depth) {
+        //남길 치킨집의 갯수와 같아질 때, 수행
+        if (depth == m) {
             int sum = 0;
+            //arrMap에 표시된 집의 위치정보를 각각 가지고온다.
             for (int[] house : houses) {
                 int minDis = Integer.MAX_VALUE;
+                //여러 치킨집중 m개만큼 선택된 치킨집의 위치정보를 각각 가지고 온다.
                 for (int[] selected : selectedMarkets) {
+                    //거릿값 계산
                     int dist = Math.abs(house[0] - selected[0]) + Math.abs(house[1] - selected[1]);
+                    //현재 집에서 여러 치킨집과의 거리를 비교 후, 최솟값을 minDis에 저장
                     minDis= Math.min(minDis, dist);
                 }
+                //각 집과 선택된 치킨집 중에서 가장 가까운 최소거리를 합한다.
                 sum+=minDis;
             }
             answer = Math.min(answer, sum);
+            return; // 종료
         }
-        for (int i = selectedMarket; i < markets.size(); i++) {
+        for (int i = idx; i < markets.size(); i++) {
             if (!visited[i]) {
                 visited[i]=true;
                 selectedMarkets.add(markets.get(i));
-                findMinDist(selectedMarket+1, depth+1);
+                findMinDist(i+1, depth+1);
                 visited[i]=false;
                 selectedMarkets.remove(selectedMarkets.size()-1);
             }
