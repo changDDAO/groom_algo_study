@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+//https://school.programmers.co.kr/learn/courses/30/lessons/84512
 public class 프로그래머스_모음사전 {
     static char[] alphabets = {'A','E','I','O','U'};
     static List<String> wordList = new ArrayList<>();
