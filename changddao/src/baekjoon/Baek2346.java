@@ -9,6 +9,7 @@ import java.util.*;
 /*
 	Deque 사용
  */
+//https://www.acmicpc.net/problem/2346 문제링크
 public class Baek2346 {
 
     public static void main(String[] args) throws IOException {

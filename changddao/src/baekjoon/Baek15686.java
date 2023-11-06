@@ -14,6 +14,7 @@ public class Baek15686 {
      * 3. 여러 치킨집이 있고 그중 M개만 택한 후 집과의 최소거리 측정(백트랙킹),
      *  집의 위치는 변하지 않지만, 치킨집은 for문을 순회하면서 달라질 수 있다.(완전탐색)
      * */
+    //https://www.acmicpc.net/problem/15686 문제링크
     static int n, m;
     static int[][] arrMap;
 
