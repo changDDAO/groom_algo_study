@@ -26,7 +26,7 @@ public class Baek2343 {
     }
     static int biSearch(int shortTime, int longTime) {
         while(shortTime<=longTime) {
-            int mid = (shortTime + longTime) / 2;
+            int mid = (shortTime + longTime) / 2; // 블루레이 하나의 총시간?
             int count = 1;
             int sum = 0;
             for (int i = 0; i < n; i++) {
