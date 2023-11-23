@@ -44,20 +44,23 @@ public class Baek2583 {
         }
         System.out.println(sb.toString());
     }
+
+    //bfs로 풀었지만 dfs를 이용하여 문제풀이 후 난중에 속도를 비교해 보는것도 좋을듯
     static void bfs(int y, int x) {
         Queue<int []> q = new LinkedList<>();
         int size = 1;
         q.offer(new int[]{y, x});
+        //일종의 방문표시
         map[y][x]=1;
         while (!q.isEmpty()) {
             int[] prev = q.poll();
-             //일종의 방문표시
             for (int[] nextDir : canGo) {
-                int ny = prev[0]+nextDir[0];
-                int nx = prev[1]+nextDir[1];
+                int ny = prev[0]+nextDir[1];
+                int nx = prev[1]+nextDir[0];
                 if(ny<0||ny>=m||nx<0||nx>=n) continue;
                 if (map[ny][nx] == 0) {
                     q.offer(new int[]{ny, nx});
+                    //일종의 방문표시
                     map[ny][nx]=1;
                     size++;
                 }
