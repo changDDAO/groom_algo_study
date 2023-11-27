@@ -45,7 +45,7 @@ public class Baek14503 {
     2.바라보는 방향을 기준으로 앞쪽 칸이 청소되지 않은 빈 칸인 경우 한 칸 전진한다.
     3.1번으로 돌아간다.*/
     static void dfs(int x, int y, int seeDirection) {
-        map[x][y] = 10; //방문표시
+        map[x][y] = 10; //방문표이시
 
         for (int i = 0; i < 4; i++) {
             seeDirection -= 1; //왼쪽 방향으로 회전
@@ -57,11 +57,12 @@ public class Baek14503 {
                 if (map[nx][ny] == 0) {
                     clean++;
                     dfs(nx, ny, seeDirection);
-                    return;
+                    return; //기존 dfs는 다시 거슬러 올라오기 때문에 종료처리
                 }
             }
         }
-
+        //변형된 bfs의 새로운 종료조건(왔던 방향을 기준으로 후진을 하고 4방향 탐색을 하는데 갈수 있는 방향이
+        // 없고 후진을 했을때 벽이라면 종료)
         int backDir = (seeDirection + 2) % 4;
         int bx = x + dx[backDir];
         int by = y + dy[backDir];
